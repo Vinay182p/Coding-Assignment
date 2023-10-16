@@ -1,0 +1,27 @@
+const readline = require('readline');
+
+function reverseWords(sentence) {
+    const words = sentence.split(' ');
+    const reversedWords = words.map(word => reverseWord(word));
+    const reversedSentence = reversedWords.join(' ');
+    return reversedSentence;
+}
+
+function reverseWord(word) {
+    const charArray = word.split('');
+    const reversedArray = charArray.reverse();
+    const reversedWord = reversedArray.join('');
+    return reversedWord;
+}
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+// Take user input
+rl.question('Enter a sentence: ', (inputSentence) => {
+    const reversedSentence = reverseWords(inputSentence);
+    console.log('Reversed sentence:', reversedSentence);
+    rl.close();
+});
